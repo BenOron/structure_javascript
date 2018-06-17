@@ -32,14 +32,10 @@
 
         QUnit.test("main flow building", function( assert ) {
            building.createBuilding({
-                buildingName:"ben",
-                buildingNum:"1"
+                buildingName:"Sap israel building",
+                buildingNum:"132"
             });
 
-            building.createBuilding({
-                buildingName:"ben11",
-                buildingNum:"1"
-            });
             var rm1 = new Room("rm1","1111",building.getBuildingId());
             var rm2 = new Room("rm2","2222",building.getBuildingId());
             var rm3 = new Room("rm3","3333",building.getBuildingId());
@@ -58,7 +54,7 @@
             assert.equal(building.findEmployeeRoom("ben").roomName,"Employee name not found","this Employee not found in room: " + building.findEmployeeRoom("ben").roomName);
             building.removeRoom(rm1.getRoomId());
             assert.equal(building.getRooms().length,2,"Number of rooms is: " + building.getRooms().length);
-            console.table(building.getBuilding());
+            console.table(building.getBuilding(),['index','length']);
 
         });
 

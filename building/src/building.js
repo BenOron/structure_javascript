@@ -26,7 +26,10 @@ var building = {
     },
 
     getBuilding:function () {
-        return this;
+        var bulding = {Building_Name:this.buildingName,
+            Building_Number:this.getBuildingNum(),
+            Rooms:this.getRooms()};
+        return bulding;
     },
 
     setBuildingId:function (forceId) {
