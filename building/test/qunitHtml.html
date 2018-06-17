@@ -46,7 +46,7 @@
             rm1.setRoomEmployeeName("ben1");
             rm2.setRoomEmployeeName("ben2");
             rm2.setRoomEmployeeName("ben3");
-
+            console.table(building.getBuilding(),['index']);
             assert.equal(building.getRooms().length,3,"Number of rooms is: " + building.getRooms().length);
             assert.equal(rm1.getRoomEmployeeNames().length,1,"Total Employees in this room: " + rm1.getRoomEmployeeNames().length);
             assert.equal(rm2.getRoomEmployeeNames().length,2,"Total Employees in this room: " + rm1.getRoomEmployeeNames().length);
@@ -54,7 +54,7 @@
             assert.equal(building.findEmployeeRoom("ben").roomName,"Employee name not found","this Employee not found in room: " + building.findEmployeeRoom("ben").roomName);
             building.removeRoom(rm1.getRoomId());
             assert.equal(building.getRooms().length,2,"Number of rooms is: " + building.getRooms().length);
-            console.table(building.getBuilding(),['index','length']);
+            console.table(building.getBuilding(),['index']);
 
         });
 

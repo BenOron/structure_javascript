@@ -26,9 +26,11 @@ var building = {
     },
 
     getBuilding:function () {
-        var bulding = {Building_Name:this.buildingName,
-            Building_Number:this.getBuildingNum(),
-            Rooms:this.getRooms()};
+        var bulding = {
+            Building_Name: this.buildingName,
+            Building_Number: this.getBuildingNum(),
+            In_this_building_have: this.getRooms().length.toString() + " - rooms",
+            Rooms: (JSON.stringify(this.getRooms()))};
         return bulding;
     },
 
