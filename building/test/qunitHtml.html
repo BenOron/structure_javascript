@@ -48,13 +48,19 @@
             rm2.setRoomEmployeeName("ben3");
             console.table(building.getBuilding(),['index']);
             assert.equal(building.getRooms().length,3,"Number of rooms is: " + building.getRooms().length);
-            assert.equal(rm1.getRoomEmployeeNames().length,1,"Total Employees in this room: " + rm1.getRoomEmployeeNames().length);
-            assert.equal(rm2.getRoomEmployeeNames().length,2,"Total Employees in this room: " + rm1.getRoomEmployeeNames().length);
-            assert.equal(building.findEmployeeRoom("ben1").roomName,"rm1","this Employee found in room: " + building.findEmployeeRoom("ben1").roomName);
-            assert.equal(building.findEmployeeRoom("ben").roomName,"Employee name not found","this Employee not found in room: " + building.findEmployeeRoom("ben").roomName);
+            assert.equal(rm1.getRoomEmployeeNames().length,1,"Total Employees in rm1 room: " + rm1.getRoomEmployeeNames().length);
+            assert.equal(rm2.getRoomEmployeeNames().length,2,"Total Employees in rm2 room: " + rm2.getRoomEmployeeNames().length);
+            assert.equal(building.findEmployeeRoom("ben1").roomName,"rm1","ben1 Employee found in room: " + building.findEmployeeRoom("ben1").roomName);
+            assert.equal(building.findEmployeeRoom("ben").roomName,"Employee name not found","ben Employee not found in room: " + building.findEmployeeRoom("ben").roomName);
+            rm2.setRoomEmployeeName("benToDelete");
+            assert.equal(rm2.getRoomEmployeeNames().length,3," benToDelete was added to this room");
+            rm2.removeRoomEmployeeName("benToDelete");
+            assert.equal(rm2.getRoomEmployeeNames().length,2,"benToDelete was removed in this room: " + rm2.getRoomEmployeeNames().length);
+
             building.removeRoom(rm1.getRoomId());
-            assert.equal(building.getRooms().length,2,"Number of rooms is: " + building.getRooms().length);
+            assert.equal(building.getRooms().length,2,"Number of rooms is: " + building.getRooms().length + " after removed one room");
             console.table(building.getBuilding(),['index']);
+
 
         });
 
