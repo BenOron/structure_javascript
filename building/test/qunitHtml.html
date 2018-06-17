@@ -6,20 +6,18 @@
 
     <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.6.1.css">
     <script src="https://code.jquery.com/qunit/qunit-2.6.1.js"></script>
-    <script src="../script/building.js"></script>
-    <script src="../script/room.js"></script>
+    <script src="../src/building.js"></script>
+    <script src="../src/room.js"></script>
 
     <script>
         QUnit.test("main building", function( assert ) {
-            import(building);
-            var bl = building;
-            bl.createBuilding({
+            building.createBuilding({
                 buildingName:"ben",
                 buildingNum:"1"
             });
-            assert.equal(bl.getBuildingNum(),"1","The Building number is: " + bl.getBuildingNum());
-            assert.equal(bl.getBuildingName(),"ben","The building name is: "+bl.getBuildingName());
-            assert.equal(bl.getBuildingId(),"BL-" + bl.getBuildingName() + bl.getBuildingNum(),"The buildingId Is: "  + "BL-" + bl.getBuildingName() + bl.getBuildingNum());
+            assert.equal(building.getBuildingNum(),"1","The Building number is: " + building.getBuildingNum());
+            assert.equal(building.getBuildingName(),"ben","The building name is: "+ building.getBuildingName());
+            assert.equal(building.getBuildingId(),"BL-" + building.getBuildingName() + building.getBuildingNum(),"The buildingId Is: "  + "BL-" + building.getBuildingName() + building.getBuildingNum());
         });
 
         QUnit.test("main room", function( assert ) {
@@ -52,7 +50,7 @@
             rm2.setRoomEmployeeName("ben2");
             rm2.setRoomEmployeeName("ben3");
 
-            assert.equal(building.getRooms().length,3,"Number of rooms is: " +building.getRooms().length);
+            assert.equal(building.getRooms().length,3,"Number of rooms is: " + building.getRooms().length);
             assert.equal(rm1.getRoomEmployeeNames().length,1,"Total Employees in this room: " + rm1.getRoomEmployeeNames().length);
             assert.equal(rm2.getRoomEmployeeNames().length,2,"Total Employees in this room: " + rm1.getRoomEmployeeNames().length);
             assert.equal(building.findEmployeeRoom("ben1").roomName,"rm1","this Employee found in room: " + building.findEmployeeRoom("ben1").roomName);
