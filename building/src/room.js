@@ -49,12 +49,15 @@ Room.prototype.getRoom = function () {
 
 Room.prototype.setRoomId = function(forcedRoomId) {
     if(forcedRoomId){
-        return "ROOM-" + forcedRoomId;
+        return "ROOM-" + forcedRoomId + "-" +this.getRoomId();
     }
     return "ROOM-" + this.getRoomId();
 };
 
 Room.prototype.getRoomId = function() {
+    if(this.roomId){
+        return this.roomId;
+    }
     return this.roomName + this.roomNum;
 };
 

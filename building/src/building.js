@@ -51,7 +51,11 @@ var building = {
     },
 
     removeRoom:function (roomId) {
-        delete this.rooms.roomId;
+        this.rooms.forEach(function(i){
+            if(i.roomId === roomId) {
+                return this.rooms.splice(i,1);
+            }
+        }.bind(this));
     },
 
     addRoom:function (room) {
@@ -60,7 +64,7 @@ var building = {
 
     addRooms:function (rooms) {
         for(var i = 0;i<rooms.length;i++){
-            this.rooms.push(rooms[i]);
+            this.addRoom(rooms[i]);
         }
 
     },

@@ -10,6 +10,7 @@
     <script src="../src/room.js"></script>
 
     <script>
+
         QUnit.test("main building", function( assert ) {
             building.createBuilding({
                 buildingName:"ben",
@@ -55,8 +56,14 @@
             assert.equal(rm2.getRoomEmployeeNames().length,2,"Total Employees in this room: " + rm1.getRoomEmployeeNames().length);
             assert.equal(building.findEmployeeRoom("ben1").roomName,"rm1","this Employee found in room: " + building.findEmployeeRoom("ben1").roomName);
             assert.equal(building.findEmployeeRoom("ben").roomName,"Employee name not found","this Employee not found in room: " + building.findEmployeeRoom("ben").roomName);
-            console.log(building.getBuilding());
+            building.removeRoom(rm1.getRoomId());
+            assert.equal(building.getRooms().length,2,"Number of rooms is: " + building.getRooms().length);
+            console.table(building.getBuilding());
 
+        });
+
+        document.addEventListener("load", function(){
+            window.prompt(JSON.stringify(building.getBuilding()));
         });
 
     </script>
