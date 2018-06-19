@@ -1,0 +1,68 @@
+{
+  "buildingName": "Building-1",
+  "floors": [
+    {
+      "floorName": "Floor-0",
+      "buildingName": "Building-1",
+      "rooms": [
+        {
+          "roomName": "Room-1",
+          "employees": [
+            {
+              "location": {
+                "empBuilding": "Building-1",
+                "empRoom": "Room-1"
+              },
+              "empId": "empid1",
+              "empFirstName": "John",
+              "empLastName": "Doe"
+            },
+            {
+              "location": {
+                "empBuilding": "Building-1",
+                "empRoom": "Room-1"
+              },
+              "empId": "empid2",
+              "empFirstName": "Barak",
+              "empLastName": "Obama"
+            }
+          ]
+        },
+        {
+          "roomName": "Room-2",
+          "employees": [
+            {
+              "location": {
+                "empBuilding": "Building-1",
+                "empRoom": "Room-2"
+              },
+              "empId": "empid3",
+              "empFirstName": "Jerry",
+              "empLastName": "Seinfeld"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "floorName": "Floor-1",
+      "buildingName": "Building-1",
+      "rooms": [
+        {
+          "roomName": "Room-1",
+          "employees": [
+            {
+              "location": {
+                "empBuilding": "Building-1",
+                "empRoom": "Room-1"
+              },
+              "empId": "empid4",
+              "empFirstName": "George",
+              "empLastName": "Gervin"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>qunit Building</title>
+
+    <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.6.1.css">
+    <script src="https://code.jquery.com/qunit/qunit-2.6.1.js"></script>
+    <script src="../src/buildingStra.js"></script>
+    <script src="../src/room.js"></script>
+    <script src="../src/floor.js"></script>
+    <script src="../src/employee.js"></script>
+
+
+
+    <script>
+
+        QUnit.test("main building", function( assert ) {
+            var Building1 = new Building("Building-1");
+            var f0 = new Floor("Floor-0");
+            var rm1 = new Room("Room-1");
+            var rm2 = new Room("Room-2");
+            var f1 = new Floor("Floor-1");
+            var rm21 = new Room("Room-1");
+
+            Building1.addBuildingFloor(f0);
+            Building1.addBuildingFloor(f1);
+
+            f0.addFloorRoom(rm1);
+            f0.addFloorRoom(rm2);
+            f1.addFloorRoom(rm21);
+
+            rm1.setRoomEmployeeName(new Employee("John", "Doe", "i0000"));
+            rm1.setRoomEmployeeName(new Employee("Barak", "Obama", "i0001"));
+            rm2.setRoomEmployeeName(new Employee("Jerry", "Seinfeld", "i0002"));
+            rm21.setRoomEmployeeName(new Employee("George", "Gervin", "i0003"));
+
+
+            var Building2 = new Building("Building-2");
+            var fb21 = new Floor("Floor-1");
+            var rfb21 = new Room("Room-20");
+            var rfb23 = new Room("Room-2");
+            Building2.addBuildingFloor(fb21);
+            fb21.addFloorRoom(rfb21);
+            fb21.addFloorRoom(rfb23);
+
+
+
+            rfb23.setRoomEmployeeName(new Employee("Magic", "Johnson", "i0005"));
+            rfb21.setRoomEmployeeName(new Employee("Michael", "Jordan", "i0004"));
+
+            var fb22 = new Floor("Floor-3");
+            Building2.addBuildingFloor(fb22);
+
+            var rfb22 = new Room("Room-1");
+            fb22.addFloorRoom(rfb22);
+
+
+            rfb22.setRoomEmployeeName(new Employee("Larry", "Bird", "i0006"));
+
+            var findResJs =
+                "{\"firstName\":\"John\",\"lastName\":\"Doe\",\"userId\":\"i0000\",\"locationProp\":{\"roomName\":\"Room-1\",\"buildingName\":\"Building-1\"}}";
+            assert.equal(Building1.getBuildingName(), "Building-1", "The Building name is: " + Building1.getBuildingName());
+            assert.equal(Building1.findByName("John"),findResJs,"We found Employee Location");
+            assert.equal("a","a",JSON.stringify(Building2));
+
+            console.table(Building1);
+            console.table(Building2);
+
+
+        });
+
+
+
+    </script>
+</head>
+<body>
+
+<div id="qunit"></div>
+
+</body>
+</html>

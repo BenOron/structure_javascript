@@ -63,13 +63,16 @@ var building = {
         }.bind(this));
     },
 
-    addRoom:function (room) {
-        this.rooms.push(room);
+    addRoom:function (room,floorName) {
+        if(this.floorName === floorName){
+            this.rooms.push(room);
+        }
+
     },
 
-    addRooms:function (rooms) {
+    addRooms:function (rooms,floorName) {
         for(var i = 0;i<rooms.length;i++){
-            this.addRoom(rooms[i]);
+            this.addRoom(rooms[i],floorName);
         }
 
     },

@@ -1,23 +1,33 @@
-function Room(roomName,roomNum,roomBuildingId) {
-     this.roomNum = roomNum;
-     this.roomName = roomName;
-     this.roomId = roomBuildingId ? this.setRoomId(roomBuildingId) :this.setRoomId();
+function Room(roomName) {
+    this.roomName = roomName;
 }
+
 
 Room.prototype.getRoomEmployeeNames = function() {
     return this.roomEmployeeNames;
 };
 
-Room.prototype.setRoomEmployeeName = function(employeeName) {
-    if(employeeName){
-        if(!this.roomEmployeeNames){
-           this.roomEmployeeNames = [];
+Room.prototype.setRoomEmployeeName = function(emp) {
+    if(!this.roomEmployeeNames){
+       this.roomEmployeeNames = [];
+    }
+    emp.locationProp = {roomName:this.roomName,buildingName:this.buildingName};
+    this.roomEmployeeNames.push(emp);
+};
+
+
+Room.prototype.findRoomWithEmp = function (name) {
+    for(var i = 0 ; i <  this.roomEmployeeNames.length;i++){
+        if(this.roomEmployeeNames[i].firstName === name){
+            return this.roomEmployeeNames[i];
+        }else{
+            continue
         }
-        this.roomEmployeeNames.push({employeeName:employeeName});
-    }else{
-        console.log("you can add employee to this room");
     }
 };
+
+
+
 
 Room.prototype.removeRoomEmployeeName = function(employeeName) {
     this.roomEmployeeNames.pop({roomId:this.getRoomId(),employeeName:employeeName});
@@ -47,35 +57,20 @@ Room.prototype.getRoom = function () {
     return this;
 };
 
-Room.prototype.setRoomId = function(forcedRoomId) {
-    if(forcedRoomId){
-        return "ROOM-" + forcedRoomId + "-" +this.getRoomId();
-    }
-    return "ROOM-" + this.getRoomId();
+Room.prototype.setRoomFloor = function (val) {
+    this.roomNum = val;
 };
 
-Room.prototype.getRoomId = function() {
-    if(this.roomId){
-        return this.roomId;
-    }
-    return this.roomName + this.roomNum;
+Room.prototype.getRoomFloor = function () {
+    return this;
 };
 
-
-Room.prototype.setRoomName = function(val) {
-    this.roomName = val;
-};
 
 Room.prototype.getRoomName = function() {
     return this.roomName;
-}
-
-Room.prototype.setRoomBuildingId = function(id) {
-    if(!id){
-        consle.log("need a building id we don't know for what building add this room");
-    }
-    return id;
 };
+
+
 
 
 

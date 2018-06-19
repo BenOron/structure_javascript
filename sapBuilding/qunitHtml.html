@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>qunit Building</title>
+
+    <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.6.1.css">
+    <script src="https://code.jquery.com/qunit/qunit-2.6.1.js"></script>
+    <!--<script src="building.js"></script>-->
+    <script src="building.js"></script>
+
+    <script>
+      QUnit.test("main test", function( assert ) {
+          var myBuilding = new SAP();
+          myBuilding.addBuilding("ben");
+          assert.equal(myBuilding.getAllBuildings().length,1,"getAllBuildings size is:" + myBuilding.getAllBuildings().length );
+          myBuilding.removeBuilding("ben");
+          assert.equal(myBuilding.getAllBuildings().length,0,"remove building now the size is:" + myBuilding.getAllBuildings().length );
+          myBuilding.addBuilding("Building-1");
+          assert.equal(myBuilding.getAllBuildings()[0].buildingName,"Building-1" , myBuilding.getAllBuildings()[0].buildingName +" was added" );
+          myBuilding.addFloor("Building-1","Floor-0");
+          myBuilding.addRoom("Building-1","Floor-0","Room-1");
+          myBuilding.addEmployee("Building-1","Floor-0","Room-1","empid1","John","Doe");
+          myBuilding.addEmployee("Building-1","Floor-0","Room-1","empid2","Barak","Obama");
+          myBuilding.addRoom("Building-1","Floor-0","Room-2");
+          myBuilding.addEmployee("Building-1","Floor-0","Room-2","empid3","Jerry","Seinfeld");
+          myBuilding.addFloor("Building-1","Floor-1");
+          myBuilding.addRoom("Building-1","Floor-1","Room-1");
+          myBuilding.addEmployee("Building-1","Floor-1","Room-1","empid4","George","Gervin");
+          assert.equal(JSON.stringify(myBuilding.getEmployee("Building-1","Floor-1","Room-1","Gervin").location),'{"empBuilding":"Building-1","empRoom":"Room-1"}',"we found Gervin " + JSON.stringify(myBuilding.getEmployee("Building-1","Floor-1","Room-1","Gervin").location) );
+          console.log(myBuilding.getEmployee("Building-1","Floor-1","Room-1","Gervin"));
+          console.log(myBuilding.print("Building-1"));
+
+        });
+  </script>
+</head>
+<body>
+
+<div id="qunit"></div>
+
+</body>
+</html>
